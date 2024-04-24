@@ -39,6 +39,10 @@ php artisan vendor:publish --provider="Brand3000\NovaRolesAndPermissions\Publish
 php artisan migrate
 ```
 
+### Set administrators
+Go to your database, find the users table and choose administrators by setting the role_admin column into 1. Additionally, set the supar_admin column into 1 for those who are eligible.
+If you have different types of users in your project, feel free to add more role_ columns for future development.
+
 ### During development
 During development, you have to add all the resources you want to be managed into the array $booleanOptions of the fields() function in the app/Nova/Admin.php nova resource.
 
