@@ -75,7 +75,7 @@ class User extends Resource
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
 
-            Hidden::make('role_user', 'role_user')->default(true),
+            Hidden::make('role_user', 'role_user')->default(1),
         ];
     }
 }
