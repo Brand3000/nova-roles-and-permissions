@@ -1,0 +1,54 @@
+<?php
+
+namespace app\Policies;
+
+use app\Models\User as Admin;
+
+class AdminPolicy
+{
+    public function view(Admin $admin, $resource): bool
+    {
+        if ($admin->id == 1) {
+            return true;
+        }
+        if ($admin->id == $resource->id) {
+            return true;
+        }
+
+        return $admin->super_admin && ($resource->id != 1);
+    }
+
+    public function update(Admin $admin, $resource): bool
+    {
+        if ($admin->id == 1) {
+            return true;
+        }
+        if ($admin->id == $resource->id) {
+            return true;
+        }
+
+        return $admin->super_admin && ($resource->id != 1);
+    }
+
+    public function create(Admin $admin): bool
+    {
+        return $admin->super_admin;
+    }
+
+    public function replicate(Admin $admin, $resource): bool
+    {
+        return false;
+    }
+
+    public function delete(Admin $admin, $resource): bool
+    {
+        if ($resource->id == 1) {
+            return false;
+        }
+        if ($admin->id == $resource->id) {
+            return false;
+        }
+
+        return $admin->super_admin;
+    }
+}

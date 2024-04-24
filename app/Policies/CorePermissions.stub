@@ -1,0 +1,76 @@
+<?php
+
+declare(strict_types=1);
+
+namespace app\Policies;
+
+use app\Models\User as Admin;
+use Illuminate\Support\Facades\Auth;
+
+class CorePermissions
+{
+    private string $resource;
+
+    public function __construct($resource = null)
+    {
+        $this->resource = $resource;
+    }
+
+    public function viewAny(Admin $admin): bool
+    {
+        return $this->reader();
+    }
+
+    protected function reader(): bool
+    {
+        if (Auth::user()->super_admin || (Auth::user()->id === 1)) {
+            return true;
+        }
+
+        return (Auth::user()->reader[$this->resource] ?? false) === true || (Auth::user()->editor[$this->resource] ?? false) === true;
+    }
+
+    public function view(Admin $admin, $resource): bool
+    {
+        return $this->reader();
+    }
+
+    public function create(Admin $admin): bool
+    {
+        return $this->editor();
+    }
+
+    protected function editor(): bool
+    {
+        if (Auth::user()->super_admin || (Auth::user()->id == 1)) {
+            return true;
+        }
+
+        return (Auth::user()->editor[$this->resource] ?? false) === true;
+    }
+
+    public function update(Admin $admin, $resource): bool
+    {
+        return $this->editor();
+    }
+
+    public function replicate(Admin $admin, $resource): bool
+    {
+        return $this->editor();
+    }
+
+    public function delete(Admin $admin, $resource): bool
+    {
+        return $this->editor();
+    }
+
+    public function restore(Admin $admin, $resource): bool
+    {
+        return $this->editor();
+    }
+
+    public function forceDelete(Admin $admin, $resource): bool
+    {
+        return $this->editor();
+    }
+}

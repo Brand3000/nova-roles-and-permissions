@@ -1,0 +1,32 @@
+{
+    "name": "brand3000/nova-roles-and-permissions",
+    "description": "This package allows separating roles for admins and other types of users while stored in the same users table. Additionally, it provides functionality for managing permissions (reader/editor) for the admins of a project powered by Laravel Nova.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "roles",
+        "permissions"
+    ],
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Brand3000\\NovaRolesAndPermissions\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Brand3000\\NovaRolesAndPermissions\\Publisher"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ]
+}

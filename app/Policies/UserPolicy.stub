@@ -1,0 +1,16 @@
+<?php
+
+namespace app\Policies;
+
+use app\Nova\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
+
+class UserPolicy extends CorePermissions
+{
+    use HandlesAuthorization;
+
+    public function __construct()
+    {
+        parent::__construct(User::uriKey());
+    }
+}
