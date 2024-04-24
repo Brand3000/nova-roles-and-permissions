@@ -45,7 +45,7 @@ During development, you have to add all the resources you want to be managed int
 ### Before switching a project to the production state
 Go into the NovaServiceProvider.php file and add the next logic into the gate() function
 ```php
-      Gate::define('viewNova', function ($user) {
-          return $user->role_admin;
-      });
+Gate::define('viewNova', function ($user) {
+    return $user->role_admin;
+});
 ```
