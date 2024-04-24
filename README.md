@@ -1,7 +1,12 @@
 # Laravel Nova Roles and Permissions
 This package allows separating roles for admins and other types of users while stored in the same users table. Additionally, it provides functionality for managing permissions (reader/editor) for the admins of a project powered by Laravel Nova.
+
 ## Screenshots
 ![NovaRolesAndPermissions](/docs/nova-roles-and-permissions.png)
+
+## Requirements
+Laravel Nova 4
+
 ## Installation
 
 ### Install the package using composer
@@ -32,4 +37,15 @@ php artisan vendor:publish --provider="Brand3000\NovaRolesAndPermissions\Publish
 ### Run new migration
 ```bash
 php artisan migrate
+```
+
+### During development
+During development, you have to add all the resources you want to be managed into the array $booleanOptions of the fields() function in the app/Nova/Admin.php nova resource.
+
+### Before switching a project to the production state
+Go into the NovaServiceProvider.php file and add the next logic into the gate() function
+```php
+      Gate::define('viewNova', function ($user) {
+          return $user->role_admin;
+      });
 ```
