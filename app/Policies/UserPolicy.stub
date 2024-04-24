@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Policies;
+namespace App\Policies;
 
-use app\Nova\User;
+use App\Nova\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy extends CorePermissions

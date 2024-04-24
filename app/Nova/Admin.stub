@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Nova;
+namespace App\Nova;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
@@ -18,9 +18,9 @@ class Admin extends Resource
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\app\Models\Admin>
+     * @var class-string<\App\Models\Admin>
      */
-    public static $model = \app\Models\Admin::class;
+    public static $model = \App\Models\Admin::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Policies;
+namespace App\Policies;
 
-use app\Models\User as Admin;
+use App\Models\User as Admin;
 
 class AdminPolicy
 {
