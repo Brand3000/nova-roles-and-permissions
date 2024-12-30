@@ -53,3 +53,8 @@ Gate::define('viewNova', function ($user) {
     return $user->role_admin;
 });
 ```
+
+### If you want to seed a default super admin, run the next command
+```
+php artisan db:seed --class=SuperAdminSeeder
+```
